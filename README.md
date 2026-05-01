@@ -221,7 +221,7 @@ docs.extract({ url: "https://api.stripe.com/openapi/spec.json", tag: "charges" }
 
 Google and Anthropic's official MCP best practices ask for "Single Responsibility," "Clear Descriptions," and "Structured Error Handling." That is the bare minimum.
 
-Thanks to [**Vurb.ts**](https://github.com/VinkiusLabs/vurb-ts), DocBreach elevates these concepts to the tenth power, operating years ahead of the standard protocol:
+Thanks to [**Vurb.ts**](https://github.com/vinkius-labs/vurb.ts), DocBreach elevates these concepts to the tenth power, operating years ahead of the standard protocol:
 
 - **MVA Architecture (Model → View → Agent)**: Standard MCP returns raw JSON strings. We route everything through Fluent Presenters acting as smart egress firewalls, stripping noise before the LLM ever sees it.
 - **HATEOAS Navigation**: Instead of the agent guessing what to do next, every DocBreach response includes a `.suggestActions()` payload telling the model exactly which tool to call next.
