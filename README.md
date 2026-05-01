@@ -11,6 +11,7 @@
   <p>
     <a href="#-quickstart">Quickstart</a> · <a href="#%EF%B8%8F-the-weapon-guerrilla-architecture">Architecture</a> · <a href="#-the-uncomfortable-truth">Why This Exists</a>
   </p>
+  <img width="893" height="620" alt="image" src="https://github.com/user-attachments/assets/44586e85-7289-49ed-ba95-bd53392cfa86" />
 </div>
 
 ---
