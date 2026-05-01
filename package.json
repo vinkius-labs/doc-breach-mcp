@@ -1,0 +1,40 @@
+{
+  "name": "doc-breach-mcp",
+  "version": "0.0.1",
+  "description": "The web is hostile to AI Agents. We brought a crowbar. Universal documentation discovery MCP server.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "documentation",
+    "scraping",
+    "claude",
+    "cursor",
+    "windsurf",
+    "openapi",
+    "swagger",
+    "llm",
+    "vurb"
+  ],
+  "author": "Vinkius Labs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VinkiusLabs/doc-breach-mcp"
+  },
+  "homepage": "https://github.com/VinkiusLabs/doc-breach-mcp",
+  "bugs": {
+    "url": "https://github.com/VinkiusLabs/doc-breach-mcp/issues"
+  },
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "doc-breach-mcp": "dist/server.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
