@@ -19,7 +19,7 @@ await autoDiscover(registry, fileURLToPath(new URL('./agents', import.meta.url))
 async function main() {
     await startServer({
         name: 'doc-breach-mcp',
-        version: '0.1.0',
+        version: '0.2.0',
         registry,
         contextFactory: () => ({
             cache: new Map(),
