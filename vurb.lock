@@ -46,9 +46,9 @@
       }
     }
   },
-  "generatedAt": "2026-05-01T20:22:15.541Z",
+  "generatedAt": "2026-05-01T21:18:20.611Z",
   "integrityDigest": "sha256:a5917b63509e6ae674a5c43b30234e4e8c5913876e14d4f7d56b33a7c1f76876",
   "lockfileVersion": 1,
   "serverName": "vurb-server",
-  "vurbVersion": "3.19.1"
+  "vurbVersion": "3.19.3"
 }
