@@ -11,8 +11,8 @@ import { stripHtml } from '../shared/utils.js';
 
 // ── Patterns ─────────────────────────────────────────────────
 
-const LINK_RE    = /<a[^>]*class="result-link"[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
-const SNIPPET_RE = /<td[^>]*class="result-snippet"[^>]*>([\s\S]*?)<\/td>/gi;
+const LINK_RE    = /<a[^>]*class=['"]result-link['"][^>]*href=['"]([^'"]+)['"][^>]*>([\s\S]*?)<\/a>|<a[^>]*href=['"]([^'"]+)['"][^>]*class=['"]result-link['"][^>]*>([\s\S]*?)<\/a>/gi;
+const SNIPPET_RE = /<td[^>]*class=['"]result-snippet['"][^>]*>([\s\S]*?)<\/td>/gi;
 
 // ── Public API ───────────────────────────────────────────────
 
@@ -35,7 +35,9 @@ export function parseResults(html: string): SearchResult[] {
 interface RawLink { readonly url: string; readonly title: string; }
 
 function parseLinkMatch(m: RegExpMatchArray): RawLink {
-    return { url: decodeRedirect(m[1]), title: stripHtml(m[2]).trim() };
+    const url   = m[1] ?? m[3];
+    const title = m[2] ?? m[4];
+    return { url: decodeRedirect(url), title: stripHtml(title).trim() };
 }
 
 function matchAll<T>(html: string, pattern: RegExp, transform: (m: RegExpMatchArray) => T): T[] {
