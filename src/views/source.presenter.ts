@@ -5,21 +5,16 @@
 // the agent doesn't have to figure out what to do next.
 // ══════════════════════════════════════════════════════════════
 
-import { definePresenter, ui } from '@vurb/core';
+import { createPresenter, ui } from '@vurb/core';
 import { SearchResultModel } from '../models/SearchResultModel.js';
 
-export const SourcePresenter = definePresenter({
-    name: 'DocSources',
-    schema: SearchResultModel.schema,
-    agentLimit: {
-        max: 10,
-        onTruncate: (n: number) => ui.summary(`${n} results omitted. Refine your query to get more specific results.`),
-    },
-    suggestActions: (source: { url?: string | null; title?: string | null }) => [
+export const SourcePresenter = createPresenter('DocSources')
+    .schema(SearchResultModel.schema)
+    .agentLimit(10, (n: number) => ui.summary(`${n} results omitted. Refine your query to get more specific results.`))
+    .suggestActions((source: { url?: string | null; title?: string | null }) => [
         {
             tool: 'docs.read',
             reason: `Read the documentation at ${source.title ?? source.url}`,
             args: { url: source.url ?? '' },
         },
-    ],
-});
+    ]);

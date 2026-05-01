@@ -21,6 +21,7 @@ export const search = docs.query('search')
     .withOptionalString('site', 'Restrict search to this domain (e.g., "docs.stripe.com")')
     .returns(SourcePresenter)
     .stale()
+    .concurrency({ maxActive: 5, maxQueue: 15 })
     .handle(async (input, ctx) => {
         ctx.requestCount++;
 

@@ -47,6 +47,7 @@ export const discover = docs.query('discover')
     .withString('query', 'What to search for (e.g., "datadog API monitoring endpoints")')
     .returns(SourcePresenter)
     .stale()
+    .concurrency({ maxActive: 5, maxQueue: 15 })
     .handle(async (input, ctx) => {
         ctx.requestCount++;
 

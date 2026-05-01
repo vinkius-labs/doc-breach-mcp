@@ -64,6 +64,7 @@ export const read = docs.query('read')
     .withString('url', 'Full URL of the documentation page to read')
     .withOptionalNumber('max_length', 'Maximum output length in characters (default: 20000)')
     .returns(ContentPresenter)
+    .cached()
     .concurrency({ maxActive: 3, maxQueue: 5 })
     .egress(100_000)
     .handle(async (input, ctx) => {

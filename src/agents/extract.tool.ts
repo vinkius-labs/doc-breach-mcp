@@ -24,6 +24,9 @@ export const extract = docs.query('extract')
     .withOptionalEnum('method', ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'] as const, 'Filter by HTTP method')
     .withOptionalString('search', 'Search endpoint descriptions')
     .returns(EndpointPresenter)
+    .cached()
+    .concurrency({ maxActive: 3, maxQueue: 10 })
+    .egress(200_000)
     .handle(async (input, ctx) => {
         ctx.requestCount++;
 

@@ -5,19 +5,14 @@
 // with a hint to filter by tag or method.
 // ══════════════════════════════════════════════════════════════
 
-import { definePresenter, ui } from '@vurb/core';
+import { createPresenter, ui } from '@vurb/core';
 import { EndpointModel } from '../models/EndpointModel.js';
 
-export const EndpointPresenter = definePresenter({
-    name: 'Endpoints',
-    schema: EndpointModel.schema,
-    agentLimit: {
-        max: 30,
-        onTruncate: (n: number) => ui.summary(`${n} endpoints omitted. Use the "tag" or "method" parameter to filter.`),
-    },
-    suggestActions: (ep) => [{
+export const EndpointPresenter = createPresenter('Endpoints')
+    .schema(EndpointModel.schema)
+    .agentLimit(30, (n: number) => ui.summary(`${n} endpoints omitted. Use the "tag" or "method" parameter to filter.`))
+    .suggestActions((ep: { method?: string; path?: string }) => [{
         tool: 'docs.read',
         reason: `Read full documentation for ${ep.method} ${ep.path}`,
         args: { url: '' },
-    }],
-});
+    }]);

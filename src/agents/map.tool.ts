@@ -27,6 +27,9 @@ export const map = docs.query('map')
     )
     .withString('domain', 'Domain to map (e.g., "stripe.com", "docs.github.com")')
     .returns(SiteMapPresenter)
+    .cached()
+    .concurrency({ maxActive: 3, maxQueue: 10 })
+    .egress(500_000)
     .handle(async (input, ctx) => {
         ctx.requestCount++;
 

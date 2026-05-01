@@ -18,7 +18,7 @@
             "read",
             "search"
           ],
-          "systemRulesFingerprint": "static:054c12396ae3cda9aa742788e0245e83029bfe024f92c924125e91890e30ef95"
+          "systemRulesFingerprint": "dynamic"
         },
         "entitlements": {
           "codeEvaluation": false,
@@ -27,7 +27,7 @@
           "network": false,
           "subprocess": false
         },
-        "integrityDigest": "sha256:cafc7c2ebbd070c22a720eccf3c6dc22fec964d4a2c1e6e2af8a61276eed3668",
+        "integrityDigest": "sha256:8781082d304ba4ec1f3c4f099a48c7fd6d0028d2185f2e1d0685b7b6e3f2a7d3",
         "surface": {
           "actions": [
             "discover",
@@ -48,8 +48,8 @@
       }
     }
   },
-  "generatedAt": "2026-05-01T22:04:01.401Z",
-  "integrityDigest": "sha256:45c944b5f354f3ac91adc1754aaad4b4f521297c9d2dc9e7c7b8b4626da080a1",
+  "generatedAt": "2026-05-01T22:22:57.441Z",
+  "integrityDigest": "sha256:8aca86a6ab20dbcaffd7a06b6d7b6e2ed5ee2c5a22b403d2664ab5bb88330292",
   "lockfileVersion": 1,
   "serverName": "vurb-server",
   "vurbVersion": "3.19.3"
