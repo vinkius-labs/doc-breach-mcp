@@ -1,6 +1,6 @@
 {
   "name": "doc-breach-mcp",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "💥 The web is hostile to AI Agents. We brought a crowbar. Universal documentation discovery MCP server.",
   "type": "module",
   "main": "dist/server.js",
