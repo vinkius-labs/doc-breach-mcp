@@ -1,0 +1,54 @@
+{
+  "capabilities": {
+    "tools": {
+      "docs": {
+        "behavior": {
+          "affordanceTopology": [],
+          "cognitiveGuardrails": {
+            "agentLimitMax": null,
+            "egressMaxBytes": null
+          },
+          "destructiveActions": [],
+          "egressSchemaDigest": "sha256:d435261ac07877e34e136096ab2c9d0f23585a4f2e13df212e1f7241fbeccfe2",
+          "middlewareChain": [],
+          "readOnlyActions": [
+            "discover",
+            "extract",
+            "read",
+            "search"
+          ],
+          "systemRulesFingerprint": "static:8f59775e8c5342d486c32c22f611da6d775d03c920c1892f32f2d5af9195c95b"
+        },
+        "entitlements": {
+          "codeEvaluation": false,
+          "crypto": false,
+          "filesystem": false,
+          "network": false,
+          "subprocess": false
+        },
+        "integrityDigest": "sha256:b1b26203d823f43881546f25ccce9c84c947444b044a2f75b5f30af82fce88c4",
+        "surface": {
+          "actions": [
+            "discover",
+            "extract",
+            "read",
+            "search"
+          ],
+          "description": "[INSTRUCTIONS] Use this as the FIRST step when you need to find documentation. Use specific, descriptive queries. Example: \"stripe API webhooks\" instead of just \"stripe\". Combine your search intents into a single query. Do NOT call this tool in rapid loops — refine your query instead.\n\nFind documentation sources for any service, library, or API. Select operation via the `action` parameter. Actions: discover, extract, read, search\n\nWorkflow:\n- 'discover': [INSTRUCTIONS] Use this as the FIRST step when you need to find documentation. Use specific, descriptive queries. Example: \"stripe API webhooks\" instead of just \"stripe\". Combine your search intents into a single query. Do NOT call this tool in rapid loops — refine your query instead.\n\nFind documentation sources for any service, library, or API. Requires: query\n- 'extract': [INSTRUCTIONS] Use this ONLY when docs.read has identified an OpenAPI/Swagger spec URL or Postman Collection. Provide a tag to filter endpoints by API group. If no tag is provided, returns a summary of all tags with endpoint counts.\n\nExtract structured endpoint information from an OpenAPI, Swagger, or Postman spec. Requires: url\n- 'read': [INSTRUCTIONS] Reads a documentation page and returns clean Markdown. Handles HTML, JSON, YAML, OpenAPI specs, Postman Collections, PDFs (<5MB), and llms.txt. The response includes a \"Related Documentation Links\" section extracted from page navigation. ALWAYS check these links for authentication and getting-started pages before generating code.\n\nRead any documentation URL and return clean, LLM-ready Markdown. Requires: url\n- 'search': [INSTRUCTIONS] Use this when you ALREADY know the documentation domain and need to find a specific page. Always provide the \"site\" parameter when searching within a known domain. Example: docs.search({ query: \"authentication headers\", site: \"docs.stripe.com\" })\n\nSearch for specific topics within a documentation site. Requires: query",
+          "inputSchemaDigest": "sha256:2ba84c9c706537da3dacb1b1b8b3010e48eabe9d45f529cbd95fb63a73051102",
+          "tags": []
+        },
+        "tokenEconomics": {
+          "inflationRisk": "critical",
+          "schemaFieldCount": 16,
+          "unboundedCollection": true
+        }
+      }
+    }
+  },
+  "generatedAt": "2026-05-01T20:22:15.541Z",
+  "integrityDigest": "sha256:a5917b63509e6ae674a5c43b30234e4e8c5913876e14d4f7d56b33a7c1f76876",
+  "lockfileVersion": 1,
+  "serverName": "vurb-server",
+  "vurbVersion": "3.19.1"
+}
