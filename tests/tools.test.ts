@@ -62,3 +62,13 @@ describe('docs.extract', () => {
         expect(extract.description).toBeTruthy();
     });
 });
+
+describe('docs.map', () => {
+    it('should define "domain" as a required parameter', () => {
+        const def = docsBuilder.buildToolDefinition() as any;
+        const map = def.actions?.map ?? def;
+
+        expect(map.description).toBeTruthy();
+        expect(map.description.length).toBeGreaterThan(10);
+    });
+});

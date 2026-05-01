@@ -9,7 +9,7 @@ import { initVurb, autoDiscover } from '@vurb/core';
 import { fileURLToPath } from 'node:url';
 
 describe('Registry', () => {
-    it('should register all 4 tools via autoDiscover from dist/', async () => {
+    it('should register all 5 tools via autoDiscover from dist/', async () => {
         const f = initVurb();
         const registry = f.registry();
 
@@ -30,7 +30,8 @@ describe('Registry', () => {
         expect(actionNames).toContain('read');
         expect(actionNames).toContain('search');
         expect(actionNames).toContain('extract');
-        expect(actionNames).toHaveLength(4);
+        expect(actionNames).toContain('map');
+        expect(actionNames).toHaveLength(5);
     });
 
     it('should skip test and declaration files during discovery', async () => {

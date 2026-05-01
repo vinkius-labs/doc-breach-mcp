@@ -7,6 +7,7 @@ import { describe, it, expect } from 'vitest';
 import { SearchResultModel } from '../src/models/SearchResultModel.js';
 import { DocContentModel } from '../src/models/DocContentModel.js';
 import { EndpointModel } from '../src/models/EndpointModel.js';
+import { SiteMapModel } from '../src/models/SiteMapModel.js';
 
 describe('SearchResultModel', () => {
     it('should be defined with name "SearchResult"', () => {
@@ -41,5 +42,17 @@ describe('EndpointModel', () => {
     it('should have a valid Zod schema', () => {
         expect(EndpointModel.schema).toBeDefined();
         expect(typeof EndpointModel.schema.parse).toBe('function');
+    });
+});
+
+describe('SiteMapModel', () => {
+    it('should be defined with name "SiteMap"', () => {
+        expect(SiteMapModel).toBeDefined();
+        expect(SiteMapModel.name).toBe('SiteMap');
+    });
+
+    it('should have a valid Zod schema', () => {
+        expect(SiteMapModel.schema).toBeDefined();
+        expect(typeof SiteMapModel.schema.parse).toBe('function');
     });
 });
