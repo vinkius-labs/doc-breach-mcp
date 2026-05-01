@@ -94,6 +94,9 @@ You: "Integrate with the Datadog API and list all monitors"
 Agent → docs.discover({ query: "datadog API" })
      ← Found: docs.datadoghq.com/api/latest/ (openapi)
 
+Agent → docs.map({ domain: "docs.datadoghq.com" })
+     ← 🗺️ Sitemap hierarchy, auto-generated Mermaid graph, and llms.txt discovery
+
 Agent → docs.read({ url: "https://docs.datadoghq.com/api/latest/" })
      ← 📄 Clean Markdown + nav links + auth requirements
 
@@ -180,6 +183,14 @@ docs.discover({ query: "stripe webhooks API" })
 // → [ { url, title, type: "openapi", source: "probe" }, ... ]
 ```
 
+### `docs.map`
+> Map the complete documentation structure of any domain. Extracts sitemaps, robots.txt, and llms.txt, returning an architectural blueprint.
+
+```typescript
+docs.map({ domain: "docs.stripe.com" })
+// → { total: 1200, sections: { "Root": [...], "API": [...] }, ... }
+```
+
 ### `docs.read`
 > Read any documentation URL and return clean, LLM-ready Markdown.
 
@@ -210,10 +221,12 @@ docs.extract({ url: "https://api.stripe.com/openapi/spec.json", tag: "charges" }
 
 DocBreach is built on [**Vurb.ts**](https://github.com/VinkiusLabs/vurb-ts) — the TypeScript framework for production MCP servers. Vurb.ts provides:
 
-- **MVA Architecture** (Model → View → Agent) — Presenters as egress firewalls
-- **Cognitive Rules** — System-level instructions injected with every response
-- **HATEOAS Navigation** — Every result tells the agent what to do next
-- **Self-Healing Errors** — Failed? The error itself guides the agent to recover
+- **MVA Architecture** (Model → View → Agent) — Fluent Presenters acting as smart egress firewalls.
+- **JIT System Rules** — Dynamic instructions injected mid-flight based on payload context (e.g., "The content was truncated, use search").
+- **Server-Side Mermaid UI** — Sends native `ui.mermaid()` visual graphs to the MCP Inspector to help humans see what the agent sees.
+- **State Sync & Cache Control** — Emits `.cached()` directives at the protocol level to eliminate duplicate requests and save agent context.
+- **HATEOAS Navigation** — Every result tells the agent what to do next via `.suggestActions()`.
+- **Self-Healing Errors** — Failed? The error itself guides the agent to recover.
 
 ---
 
