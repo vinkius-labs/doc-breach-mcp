@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
-    "@vurb/core": "file:../vurb-ts/packages/core",
+    "@vurb/core": "^3.19.3",
     "cheerio": "^1.0.0",
     "pdf-parse": "^1.1.1",
     "turndown": "^7.2.0",
