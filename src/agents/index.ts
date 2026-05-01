@@ -10,3 +10,4 @@ export { discover } from './discover.tool.js';
 export { read } from './read.tool.js';
 export { search } from './search.tool.js';
 export { extract } from './extract.tool.js';
+export { map } from './map.tool.js';

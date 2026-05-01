@@ -33,3 +33,7 @@ export type { EndpointEntry, SpecSummary, EndpointFilters } from './spec/index.j
 // ── Search ───────────────────────────────────────────────────
 export { searchDDG } from './search/index.js';
 export type { SearchResult } from './search/index.js';
+
+// ── Map ──────────────────────────────────────────────────────
+export { mapDocs } from './map/index.js';
+export type { SiteMapEntry, SiteMapResult } from './map/index.js';

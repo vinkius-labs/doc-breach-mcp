@@ -1,7 +1,7 @@
 // ══════════════════════════════════════════════════════════════
 // 💥 DocBreach MCP — FluentRouter
 // All tools live under the `docs` namespace.
-// The agent sees: docs.discover, docs.read, docs.search, docs.extract
+// The agent sees: docs.discover, docs.read, docs.search, docs.extract, docs.map
 // ══════════════════════════════════════════════════════════════
 
 import { f } from '../vurb.js';
