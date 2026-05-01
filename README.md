@@ -217,16 +217,18 @@ docs.extract({ url: "https://api.stripe.com/openapi/spec.json", tag: "charges" }
 
 ---
 
-## 🏗️ Built With
+## 🏆 Beyond the MCP Specification
 
-DocBreach is built on [**Vurb.ts**](https://github.com/VinkiusLabs/vurb-ts) — the TypeScript framework for production MCP servers. Vurb.ts provides:
+Google and Anthropic's official MCP best practices ask for "Single Responsibility," "Clear Descriptions," and "Structured Error Handling." That is the bare minimum.
 
-- **MVA Architecture** (Model → View → Agent) — Fluent Presenters acting as smart egress firewalls.
-- **JIT System Rules** — Dynamic instructions injected mid-flight based on payload context (e.g., "The content was truncated, use search").
-- **Server-Side Mermaid UI** — Sends native `ui.mermaid()` visual graphs to the MCP Inspector to help humans see what the agent sees.
-- **State Sync & Cache Control** — Emits `.cached()` directives at the protocol level to eliminate duplicate requests and save agent context.
-- **HATEOAS Navigation** — Every result tells the agent what to do next via `.suggestActions()`.
-- **Self-Healing Errors** — Failed? The error itself guides the agent to recover.
+Thanks to [**Vurb.ts**](https://github.com/VinkiusLabs/vurb-ts), DocBreach elevates these concepts to the tenth power, operating years ahead of the standard protocol:
+
+- **MVA Architecture (Model → View → Agent)**: Standard MCP returns raw JSON strings. We route everything through Fluent Presenters acting as smart egress firewalls, stripping noise before the LLM ever sees it.
+- **HATEOAS Navigation**: Instead of the agent guessing what to do next, every DocBreach response includes a `.suggestActions()` payload telling the model exactly which tool to call next.
+- **JIT System Rules**: Dynamic instructions injected mid-flight based on payload context (e.g., *"The content was truncated, use search"*).
+- **Self-Healing Errors**: Standard MCP throws an error. DocBreach returns an error *and* the exact prompt/tool required to recover from it.
+- **Server-Side Mermaid UI**: Sends native `ui.mermaid()` visual graphs to the MCP Inspector to help humans see the architecture the agent sees.
+- **State Sync & Cache Control**: Emits `.cached()` directives at the protocol level to eliminate duplicate requests and save LLM token context.
 
 ---
 
