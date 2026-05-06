@@ -13,6 +13,7 @@ export { DocCache } from './shared/index.js';
 // ── Fetch ────────────────────────────────────────────────────
 export { fetchUrl, preflight } from './fetch/index.js';
 export type { FetchResult, PreflightResult } from './fetch/index.js';
+export { renderWithBrowser, closeBrowser } from './fetch/headless.js';
 
 // ── Detect ───────────────────────────────────────────────────
 export { detectFormat, detectLoginWall, detectEmbed } from './detect/index.js';

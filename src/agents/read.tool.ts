@@ -28,6 +28,7 @@ import {
     cleanHtml, extractTitle, extractSPAContent, isEmptySPA,
     extractNavLinks, truncate,
     summarizeSpec, specToMarkdown,
+    renderWithBrowser,
     DocCache,
 } from '../engine/index.js';
 import type { DocFormat } from '../engine/index.js';
@@ -160,16 +161,23 @@ export const read = docs.query('read')
                 };
             }
 
-            // SPA with no hydration data — genuinely requires JS
-            return f.error('SPA_CONTENT_EMPTY', 'This page requires JavaScript rendering.')
-                .suggest(
-                    'This documentation site is a pure SPA. Try these alternatives: ' +
-                    '1) docs.search({ query: "<service> API docs site:github.com" }) to find raw docs. ' +
-                    '2) docs.discover({ query: "<service> llms.txt" }) to find LLM-ready documentation. ' +
-                    '3) docs.discover({ query: "<service> openapi spec" }) to find the API spec directly.'
-                )
-                .actions('docs.search', 'docs.discover')
-                .warning();
+            // 🔫 Headless fallback — render with Chrome if available
+            const rendered = await renderWithBrowser(input.url);
+            if (rendered && !isEmptySPA(rendered)) {
+                html = rendered;
+                // Fall through to normal HTML cleaning + Turndown below
+            } else {
+                // SPA with no hydration data and no browser available
+                return f.error('SPA_CONTENT_EMPTY', 'This page requires JavaScript rendering.')
+                    .suggest(
+                        'This documentation site is a pure SPA. Try these alternatives: ' +
+                        '1) docs.search({ query: "<service> API docs site:github.com" }) to find raw docs. ' +
+                        '2) docs.discover({ query: "<service> llms.txt" }) to find LLM-ready documentation. ' +
+                        '3) docs.discover({ query: "<service> openapi spec" }) to find the API spec directly.'
+                    )
+                    .actions('docs.search', 'docs.discover')
+                    .warning();
+            }
         }
 
         // ── Step 8: iFrame Detection ─────────────────────────
