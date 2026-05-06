@@ -78,7 +78,14 @@ function extractNextJs(html: string): string | null {
         const candidates = [props.mdxSource, props.content, props.body, props.markdown] as const;
         const content    = candidates.find((c): c is string => typeof c === 'string');
 
-        return content ?? stringify(props);
+        if (content) return content;
+
+        // ⚛️ Empty SSR payload trap — some Next.js sites ship __NEXT_DATA__
+        // with an empty props object. stringify would return "{}" which
+        // looks like valid content but is useless. Reject so the agent
+        // pivots to GitHub/OpenAPI alternatives.
+        const stringified = stringify(props);
+        return stringified.length > 10 ? stringified : null;
     } catch {
         return match[1];
     }
