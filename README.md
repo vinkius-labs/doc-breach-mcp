@@ -15,6 +15,9 @@
 
 </div>
 
+> **Using DocBreach in production?** We want to hear about it — [**Join the Discord →**](https://discord.gg/pKEdyxAYD)
+> WAF horror stories, edge cases, and what you're building. The founder is in there.
+
 ---
 
 ## 🛑 The Problem: Agentic Workflows Are Blind
